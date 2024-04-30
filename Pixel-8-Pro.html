@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+    <meta charset="utf-8"> <!-- utf-8 works for most cases -->
+    <meta name="viewport" content="width=device-width"> <!-- Forcing initial-scale shouldn't be necessary -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <!-- Use the latest (edge) version of IE rendering engine -->
+    <meta name="x-apple-disable-message-reformatting">  <!-- Disable auto-scale in iOS 10 Mail entirely -->
+    <meta name="format-detection" content="telephone=no,address=no,email=no,date=no,url=no"> <!-- Tell iOS not to automatically link certain text strings. -->
+    <meta name="color-scheme" content="light dark">
+    <meta name="supported-color-schemes" content="light dark">
+    <title></title> <!-- The title tag shows in email notifications, like Android 4.4. -->
+
+    <!-- What it does: Makes background images in 72ppi Outlook render at correct size. -->
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:PixelsPerInch>96</o:PixelsPerInch>
+        </o:OfficeDocumentSettings>
+    </xml>
+    <![endif]-->
+
+    <!-- Web Font / @font-face : BEGIN -->
+    <!-- NOTE: If web fonts are not required, lines 23 - 41 can be safely removed. -->
+
+    <!-- Desktop Outlook chokes on web font references and defaults to Times New Roman, so we force a safe fallback font. -->
+    <!--[if mso]>
+        <style>
+            * {
+                font-family: sans-serif !important;
+            }
+        </style>
+    <![endif]-->
+
+    <!-- All other clients get the webfont reference; some will render the font and others will silently fail to the fallbacks. More on that here: https://web.archive.org/web/20190717120616/http://stylecampaign.com/blog/2015/02/webfont-support-in-email/ -->
+    <!--[if !mso]><!-->
+    <!-- insert web font reference, eg: <link href='https://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'> -->
+    <!--<![endif]-->
+
+    <!-- Web Font / @font-face : END -->
+
+    <!-- CSS Reset : BEGIN -->
+    <style>
+
+        /* What it does: Tells the email client that both light and dark styles are provided. A duplicate of meta color-scheme meta tag above. */
+        :root {
+          color-scheme: light dark;
+          supported-color-schemes: light dark;
+        }
+
+        /* What it does: Remove spaces around the email design added by some email clients. */
+        /* Beware: It can remove the padding / margin and add a background color to the compose a reply window. */
+        html,
+        body {
+            margin: 0 auto !important;
+            padding: 0 !important;
+            height: 100% !important;
+            width: 100% !important;
+        }
+
+        /* What it does: Stops email clients resizing small text. */
+        * {
+            -ms-text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        /* What it does: Centers email on Android 4.4 */
+        div[style*="margin: 16px 0"] {
+            margin: 0 !important;
+        }
+        /* What it does: forces Samsung Android mail clients to use the entire viewport */
+        #MessageViewBody, #MessageWebViewDiv{
+            width: 100% !important;
+        }
+
+        /* What it does: Stops Outlook from adding extra spacing to tables. */
+        table,
+        td {
+            mso-table-lspace: 0pt !important;
+            mso-table-rspace: 0pt !important;
+        }
+
+        /* What it does: Fixes webkit padding issue. */
+        table {
+            border-spacing: 0 !important;
+            border-collapse: collapse !important;
+            table-layout: fixed !important;
+            margin: 0 auto !important;
+        }
+
+        /* What it does: Uses a better rendering method when resizing images in IE. */
+        img {
+            -ms-interpolation-mode:bicubic;
+        }
+
+        /* What it does: Prevents Windows 10 Mail from underlining links despite inline CSS. Styles for underlined links should be inline. */
+        a {
+            text-decoration: none;
+        }
+
+        /* What it does: A work-around for email clients meddling in triggered links. */
+        a[x-apple-data-detectors],  /* iOS */
+        .unstyle-auto-detected-links a,
+        .aBn {
+            border-bottom: 0 !important;
+            cursor: default !important;
+            color: inherit !important;
+            text-decoration: none !important;
+            font-size: inherit !important;
+            font-family: inherit !important;
+            font-weight: inherit !important;
+            line-height: inherit !important;
+        }
+
+        /* What it does: Prevents Gmail from changing the text color in conversation threads. */
+        .im {
+            color: inherit !important;
+        }
+
+        /* What it does: Prevents Gmail from displaying a download button on large, non-linked images. */
+        .a6S {
+            display: none !important;
+            opacity: 0.01 !important;
+        }
+        /* If the above doesn't work, add a .g-img class to any image in question. */
+        img.g-img + div {
+            display: none !important;
+        }
+
+        /* What it does: Removes right gutter in Gmail iOS app: https://github.com/TedGoas/Cerberus/issues/89  */
+        /* Create one of these media queries for each additional viewport size you'd like to fix */
+
+        /* iPhone 4, 4S, 5, 5S, 5C, and 5SE */
+        @media only screen and (min-device-width: 320px) and (max-device-width: 374px) {
+            u ~ div .email-container {
+                min-width: 320px !important;
+            }
+        }
+        /* iPhone 6, 6S, 7, 8, and X */
+        @media only screen and (min-device-width: 375px) and (max-device-width: 413px) {
+            u ~ div .email-container {
+                min-width: 375px !important;
+            }
+        }
+        /* iPhone 6+, 7+, and 8+ */
+        @media only screen and (min-device-width: 414px) {
+            u ~ div .email-container {
+                min-width: 414px !important;
+            }
+        }
+
+    </style>
+    <!-- CSS Reset : END -->
+
+    <!-- Progressive Enhancements : BEGIN -->
+    <style>
+
+	    /* What it does: Hover styles for buttons */
+	    .button-td,
+	    .button-a {
+	        transition: all 100ms ease-in;
+	    }
+	    .button-td-primary:hover,
+	    .button-a-primary:hover {
+	        background: #555555 !important;
+	        border-color: #555555 !important;
+	    }
+
+        .verticalLine {
+        border-left: thin solid #88898c;
+        }
+
+        .img-social-media {
+            width: 50px;
+            height: 50px;
+        }
+
+	    /* Media Queries */
+	    @media screen and (max-width: 480px) {
+
+	        /* What it does: Forces table cells into full-width rows. */
+	        .stack-column,
+	        .stack-column-center {
+	            display: block !important;
+	            width: 100% !important;
+	            max-width: 100% !important;
+	            direction: ltr !important;
+	        }
+	        /* And center justify these ones. */
+	        .stack-column-center {
+	            text-align: center !important;
+	        }
+
+	        /* What it does: Generic utility class for centering. Useful for images, buttons, and nested tables. */
+	        .center-on-narrow {
+	            text-align: center !important;
+	            display: block !important;
+	            margin-left: auto !important;
+	            margin-right: auto !important;
+	            float: none !important;
+	        }
+	        table.center-on-narrow {
+	            display: inline-block !important;
+	        }
+
+	        /* What it does: Adjust typography on small screens to improve readability */
+	        .email-container p {
+	            font-size: 17px !important;
+	        }
+	    }
+
+        /* Dark Mode Styles : BEGIN */
+        /* @media (prefers-color-scheme: dark) {
+            .email-bg {
+                background: #111111 !important;
+            }
+            .darkmode-bg {
+                background: #222222 !important;
+            }
+            h1,
+            h2,
+            h3,
+            p,
+            li,
+            .darkmode-text,
+            .email-container a:not([class]) {
+                color: #F7F7F9 !important;
+            }
+            td.button-td-primary,
+            td.button-td-primary a {
+                background: #ffffff !important;
+                border-color: #ffffff !important;
+                color: #222222 !important;
+            }
+            td.button-td-primary:hover,
+            td.button-td-primary a:hover {
+                background: #cccccc !important;
+                border-color: #cccccc !important;
+            }
+            .footer td {
+                color: #aaaaaa !important;
+            }
+            .darkmode-fullbleed-bg {
+                background-color: #0F3016 !important;
+            }
+        } */
+        /* Dark Mode Styles : END */
+    </style>
+    <!-- Progressive Enhancements : END -->
+
+</head>
+<!--
+	The email background color (#222222) is defined in three places:
+	1. body tag: for most email clients
+	2. center tag: for Gmail and Inbox mobile apps and web versions of Gmail, GSuite, Inbox, Yahoo, AOL, Libero, Comcast, freenet, Mail.ru, Orange.fr
+	3. mso conditional: For Windows 10 Mail
+-->
+<body width="100%" style="margin: 0; padding: 0 !important; mso-line-height-rule: exactly; background-color: #ffffff;" class="email-bg">
+  <center role="article" aria-roledescription="email" lang="en" style="width: 100%; background-color: #ffffff;" class="email-bg">
+    <!--[if mso | IE]>
+    <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #222222;" class="email-bg">
+    <tr>
+    <td>
+    <![endif]-->
+
+        <!-- Visually Hidden Preheader Text : BEGIN -->
+        <div style="max-height:0; overflow:hidden; mso-hide:all;" aria-hidden="true">
+            (Optional) This text will appear in the inbox preview, but not the email body. It can be used to supplement the email subject line or even summarize the email's contents. Extended text preheaders (~490 characters) seems like a better UX for anyone using a screenreader or voice-command apps like Siri to dictate the contents of an email. If this text is not included, email clients will automatically populate it using the text (including image alt text) at the start of the email's body.
+        </div>
+        <!-- Visually Hidden Preheader Text : END -->
+
+        <!-- Create white space after the desired preview text so email clients don’t pull other distracting text into the inbox preview. Extend as necessary. -->
+        <!-- Preview Text Spacing Hack : BEGIN -->
+        <div style="display: none; font-size: 1px; line-height: 1px; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; font-family: sans-serif;">
+	        &zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;
+        </div>
+        <!-- Preview Text Spacing Hack : END -->
+
+        <!--
+            Set the email width. Defined in two places:
+            1. max-width for all clients except Desktop Windows Outlook, allowing the email to squish on narrow but never go wider than 680px.
+            2. MSO tags for Desktop Windows Outlook enforce a 680px width.
+            Note: The Fluid and Responsive templates have a different width (600px). The hybrid grid is more "fragile", and I've found that 680px is a good width. Change with caution.
+        -->
+        <div style="max-width: 720px; margin: 0 auto; background-color: #E3EEFC;" class="email-container">
+            <!--[if mso]>
+            <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" width="680">
+            <tr>
+            <td>
+            <![endif]-->
+
+	        <!-- Email Body : BEGIN -->
+	        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="margin: auto; text-align: center;">
+		        <!-- Email Header : BEGIN -->
+	            <tr>
+	                <td style="padding: 20px 0; text-align: center">
+	                    <img src="https://ci3.googleusercontent.com/meips/ADKq_NbavxvrinzLCHulxTe04-xtt1UHKY15A3PzIoefOvzhctD6F8jbrHwsHgsA2Qm31HfK0FWzPhUe8iC2ZMa4g3zwS8OIVej6Eq606IXhP-18bBlilnd7wyKzFeFu=s0-d-e1-ft#https://services.google.com/fh/files/emails/google_store_logo_2021.png" width="200" height="50" alt="alt_text" border="0" style="height: auto; background: #E3EEFC; font-family: sans-serif; font-size: 15px; line-height: 15px; color: #555555;">
+	                </td>
+	            </tr>
+		        <!-- Email Header : END -->
+
+                <!-- 1 Column Text + Button : BEGIN -->
+                <tr>
+                    <td style="background-color: #E3EEFC;" class="darkmode-bg">
+                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                            <tr>
+                                <td style="padding: 20px 20px 0 20px; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #555555;">
+                                    <h1 style="margin: 0 0 10px; font-size: 27px; line-height: 36px; color: #333333; font-weight: bold;">Buy the new Pixel 8 Pro, get a Pixel Watch 2 (Wi-Fi) or Pixel Buds Pro on us.</h1>
+                                    <p style="margin: 0 0 10px;"><span style="font-weight: bold; font-size: 16px; line-height: 24px; " >Plus, get up to $750 back with eligible trade-in.†</span><span style="display: block; font-size: 12px; line-height: 24px; "> Ends 10/16/23: while supplies last. Return of Pixel 8 Pro without gift item results in charges.</span><span style="display: block; font-weight: bold; font-size: 16px; line-height: 24px; padding: 10px 0 0 0; " >From $999</span></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 0 20px 20px;">
+                                    <!-- Button : BEGIN -->
+                                    <table align="center" role="presentation" cellspacing="0" cellpadding="0" border="0" style="margin: auto;">
+                                        <tr>
+                                            <td class="button-td button-td-primary" style="border-radius: 4px; background: #222222;">
+											     <a class="button-a button-a-primary" href="https://google.com/" style="background: #1967D2; border: 1px solid #1967D2; font-family: sans-serif; font-size: 16px; line-height: 24px; text-decoration: none; padding: 12px 24px; color: #ffffff; display: block; border-radius: 4px; font-weight: 500; ">Pre-order now</a>
+											</td>
+                                        </tr>
+                                    </table>
+                                    <!-- Button : END -->
+                                </td>
+                            </tr>
+
+                        </table>
+                    </td>
+                </tr>
+                <!-- 1 Column Text + Button : END -->
+
+                <!-- Hero Image, Flush : BEGIN -->
+                <tr>
+                    <td style="background-color: #E3EEFC;" class="darkmode-bg">
+                        <img src="https://ci3.googleusercontent.com/meips/ADKq_NblrDFbBZyIoqlip2sQFsBEYmq6fxpnKgp5KSMV__c_par-L0jqqcp3rbyN3qQcu_WSLErB3j3bPsFX11hlj0rhEHYXbkNxqwVg_JtcOZEw5xtaupRSRIzKwFal1g_VwpgjB53ec3810d4oatLvRDwV=s0-d-e1-ft#https://www.emailimagecdn4htg.com/a2rg41nosb/en_us/images/64c0001d7b758-1690304541.5057.png" width="680" height="" alt="alt_text" border="0" style="width: 100%; max-width: 720px; height: auto; background: #E3EEFC; font-family: sans-serif; font-size: 15px; line-height: 15px; color: #555555; margin: auto; display: block;" class="g-img">
+                    </td>
+                </tr>
+                <!-- Hero Image, Flush : END -->
+
+                <!-- Background Image with Text : BEGIN -->
+                <tr>
+                    <!-- Bulletproof Background Images c/o https://backgrounds.cm -->
+                    <td style="text-align: center; background-color: #ffffff; background-position: center center !important; background-size: cover !important;">
+                        <!--[if gte mso 9]>
+                        <v:image xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="border: 0; display: inline-block; width: 680px; height: 180px;" src="https://via.placeholder.com/680x180/222222/666666" />
+                        <v:rect xmlns:v="urn:schemas-microsoft-com:vml" fill="true" stroke="false" style="border: 0; display: inline-block; position: absolute; width: 680px; height: 180px;">
+                        <v:fill opacity="0%" color="#222222" />
+                        <![endif]-->
+                        <div>
+                            <!--[if mso]>
+                            <table align="center" role="presentation" border="0" cellspacing="0" cellpadding="0" width="500">
+                            <tr>
+                            <td width="500">
+                            <![endif]-->
+                            <table role="presentation" border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width:500px; margin: auto;">
+                                <tr>
+                                    <td style="text-align: center; padding: 60px 0 30px 0; font-family: sans-serif; font-size: 15px; line-height: 20px; color: #000000;">
+                                    <a href="" style="display: inline-block; justify-content: center; align-items: center;"><img src="https://ci3.googleusercontent.com/meips/ADKq_NZz-nzi0m57rPAoAfKo-vlKL0iaP6YOndVZgyZe1WIq8Y0z1jTNJVL0isPTvwvj5DbJtB7h8W_9gjyGZlGJC_bvHSk8KFvjP3KsICKrQ-JqapxfrZSptUah-ERtttGw698Wr21BbDhIWBk1=s0-d-e1-ft#https://services.google.com/fh/files/emails/footer_social_icon_youtube_gray_48_x2.png" class="img-social-media"></a>
+                                    <a href=""><img src="https://ci3.googleusercontent.com/meips/ADKq_NZtbEbYG8tKtJPq-GGIpui1zQ5mb2rwOcPxRFCs7jI_9fxOmj6IJBa0I5xKGRriz7F4xaOO85yVfraSxK-gb8RuvSufJoI9B6RgPtlD5Xl6ck-AyrbyVYNoN05lKEZ7JYpEQ4vdYpupndgMCg=s0-d-e1-ft#https://services.google.com/fh/files/emails/footer_social_icon_facebook_gray_48_x2.png" class="img-social-media"></a>
+                                    <a href=""><img src="https://ci3.googleusercontent.com/meips/ADKq_NbZNmJ8ec4uO4_exXUM0vSEBUOUxwixao7_b2e292_omPB27_F7UhejBkG0ur65xDoq_AGTeP7cGolg-JElTvjFlkP_SCK0pcfsGKHJ2SOg1nHkAF_bc2kWTsUyVtQWkUtSTx8dovyrTCIq=s0-d-e1-ft#https://services.google.com/fh/files/emails/footer_social_icon_twitter_gray_48_x2.png" class="img-social-media"></a>
+                                    <a href=""><img src="https://ci3.googleusercontent.com/meips/ADKq_Nam48XYaV9r7f1CJYDEHo_JmQkW_-mEW0FbBoYpr_dqBJj8cDFG7RngFrJZS-6Ap8B5S1B5HwKbp5KHSm_1WtWLnocv0EvUI1PTb2ZJBNB_GbioEdmyP0IjVKVinHhJ6qN8ShOQ1IyOu8fNfGw=s0-d-e1-ft#https://services.google.com/fh/files/emails/footer_social_icon_instagram_gray_48_x2.png" class="img-social-media"></a>
+                                    <p style="margin: 0; font-weight: bold; padding: 20px 0 20px 0; ">Was this email helpful?</p>
+                                    <a href="" style="display: inline-block; justify-content: center; align-items: center; padding: 0 10px 0 10px; "><img src="https://ci3.googleusercontent.com/meips/ADKq_NahGctbdYeUou_E8rJkYlpT1oknYJRaBqRBEIqhYxa--KPrjacql8_hm4Wr3nAThogDRRKTyXb8zUMcUSSCbb_n6k6LnBXYDmicR0-ZeAWMB-NedGStdq7tHkAh6b_nZriVOVAJsbVzf3n2kiFj=s0-d-e1-ft#https://services.google.com/fh/files/emails/footer_feedback_icon_positive_gray_48_x2.png" class="img-social-media"></a>
+                                    <a href="" style="padding: 0 10px 0 10px;" ><img src="https://ci3.googleusercontent.com/meips/ADKq_NYe7BzSdwhTl7QeVuLwjOr47yFpN8UceZ1JAcp-5mqgVrPnx4ut5-U2LhBRZNt5kGq0y0YZPmAyybhuO-J2UpacqMhv_rut7Iq0LIBb9m6zdDq9gfLGT3OwryG5N4DmV40E4o_p5Ex4cig4-PM=s0-d-e1-ft#https://services.google.com/fh/files/emails/footer_feedback_icon_neutral_gray_48_x2.png" class="img-social-media"></a>
+                                    <a href="" style="padding: 0 10px 0 10px;" ><img src="https://ci3.googleusercontent.com/meips/ADKq_NbDlxagMs317GSRwHB9XrW5RldUfKHRHy0RAi8DxKyCHW4BvOKoogxWhlWGkADaptGcRGk1TIqvJSVizeHJme6tlcKae0QRclmldI6sNxWRbIvsvRhlm1-L4raAASQ6IM4NU0SGK83XLTMzPFiJ=s0-d-e1-ft#https://services.google.com/fh/files/emails/footer_feedback_icon_negative_gray_48_x2.png" class="img-social-media"></a>
+                                    <p style="margin: 0; font-weight: bold; padding: 20px 0 0 0; ">We’d love to hear from you!</p>
+                                    <p style="margin: 0; font-weight: 0; ">Help us improve by sharing your feedback in this short <a href="" style="color: #1967D2;">survey</a>.</p>
+                                    </td>
+                                </tr>
+                            </table>
+                            <!--[if mso]>
+                            </td>
+                            </tr>
+                            </table>
+                            <![endif]-->
+                        </div>
+                        <!--[if gte mso 9]>
+                        </v:fill>
+                        </v:rect>
+                        </v:image>
+                        <![endif]-->
+                    </td>
+                </tr>
+                <!-- Background Image with Text : END -->
+
+                <!-- 1 Column Text : BEGIN -->
+                <tr>
+                    <td style="background-color: #ffffff;" class="darkmode-bg">
+                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
+                            <tr>    
+                                <hr>
+                                <td style="padding: 30px 20px 0 20px; font-family: sans-serif; font-size: 12px; line-height: 20px; color: #555555; text-align: left; ">
+                                    <span style="margin: 0 0 10px 0;">†Buy Pixel 8 Pro, get Pixel Watch 2 (Wi-Fi) or Pixel Buds Pro on us. Starting on October 4, 2023 at and ending on October 16, 2023 at 11:59pm PT; while supplies last. One offer option per Pixel 8 Pro purchase. Offer available only for US residents aged 18 years or older with US shipping addresses. All qualifying products must be added to your shopping cart to receive this bundle offer. If you return the Pixel 8 Pro without the Google Pixel Watch 2 (Wi-Fi), you may be charged $350 (MSRP of Google Pixel Watch 2 (Wi-Fi)). If you return the Pixel 8 Pro without the Pixel Buds Pro, you may be charged $199.99 (MSRP of Pixel Buds Pro). To receive a full refund, you must return all items received as part of the promotion. Except for eligible phone trade-in, offer cannot be combined with any promotional codes, or with other bundle offers running at the same time. It’s non-transferable, and it isn’t valid for cash or a cash equivalent. Purchase must be made on Google Store US. Void where prohibited.</span>
+                                    <span>Buy Pixel 8 Pro and get up to $750 back with eligible trade-in. Starting on October 4, 2023 and ending on October 16, 2023 at 11:59pm PT. Trade-in values vary based on condition, year, and configuration of your eligible device, and are subject to change upon inspection. Typical representative trade-in amounts: $750 for iPhone 14 Pro Max. Credit card refund available only on a card used to purchase the Pixel phone. Phone trade-in credit will be issued as a refund back on the credit card used for the phone purchase at Google Store or in the form of Store Credit if the purchased phone has already been returned. Refund is based on (and paid after) phone received matching the description provided at time of estimate and will be issued to form of payment used for order. Phones sent for trade-in must be received within 30 days of initiation of trade-in process, provided the purchased device has not been returned during that time.</span>
+                                    <span>Additional trade-in terms are located <a href="google.com" style="color: #1967D2;">here</a>.</span>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <!-- 1 Column Text : END -->
+
+            </table>
+            <!-- Email Body : END -->
+
+            <!-- Email Footer : BEGIN -->
+            <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="max-width: 720px; background-color: #ffffff; " class="footer">
+                <tr>
+                    <td style="padding: 0 20px 20px 20px; font-family: sans-serif; font-size: 12px; line-height: 15px; text-align: center; color: #000000;">
+                        <br><br>
+		                <span class="unstyle-auto-detected-links" style="font-weight: bold;" >© 2023  Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043, United States</span><br>
+                        <span style="font-weight: 0; padding: 20px 0 0 0; display: block; line-height: 20px">This email was sent to JohnDoe123@gmail.com because you asked to receive offers, updates and more about devices from Google on <a href="google.com" style="color: #1967D2;">store.google.com</a>. If you’d like to unsubscribe, click <a href="google.com" style="color: #1967D2;"> here</a>.</span>
+                        <br><br>
+                        <span style="color: #000000;">Privacy Policy&nbsp;&nbsp;&nbsp;</span>
+                        <div class="verticalLine" style="display: inline-block;">&nbsp;&nbsp;&nbsp;&nbsp;<span style="color: #000000;">Terms of Service</span></div>
+                    </td>
+                </tr>
+            </table>
+            <!-- Email Footer : END -->
+
+            <!--[if mso]>
+            </td>
+            </tr>
+            </table>
+            <![endif]-->
+        </div>
+
+    <!--[if mso | IE]>
+    </td>
+    </tr>
+    </table>
+    <![endif]-->
+    </center>
+</body>
+</html>
